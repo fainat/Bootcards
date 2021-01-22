@@ -1,3 +1,3 @@
 module.exports = {
-    nodeServerMongoSecure: 'mongodb://localhost/yelp_camp_'
+    nodeServerMongoSecure: 'mongodb://localhost/bootcards'
 }
