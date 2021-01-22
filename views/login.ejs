@@ -1,0 +1,70 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+        <div class="row">
+            <div class="my-2 p-3">
+                <h4 class="text-uppercase font-weight-light">
+                    <span class="font-weight-normal">
+                        Sign in
+                    </span>
+                    <span class="text-danger">
+                    Boot Comments Students
+                    </span>
+                    <span class="text-info small">
+                        from mashaddien
+                    </span>
+                </h4>
+                <h5 class="text-capitalize text-black-50 font-weight-light m-3">
+                    Sing in your account Mashaddien. Forgot passoword ? Contact our Server Administrations <br>
+                    and read <span class="text-danger">bottom </span>Users Permissions
+                </h5>
+            </div>
+            <div class="col-md-6">
+                <div class="m-auto">
+                    <form action="/login" method="post">
+                        <div class="input-group my-2">
+                            <input type="text" name="username" placeholder="Enter your username or email"
+                                   class="form-control">
+                        </div>
+                        <div class="input-group my-2">
+                            <input type="password" name="password" placeholder="Enter your password" class="form-control">
+                            <button type="button" class="btn btn-primary btn-sm ml-2">show</button>
+                        </div>
+                        <div class="border-top p-1 my-2">
+                            <div class="my-3">
+                                <button type="reset" class="btn btn-dark">
+                                    Reset
+                                </button>
+                                <button type="submit" class="btn btn-warning">
+                                    Sign In
+                                </button>
+                                <a href="/registration" class="btn btn-link">
+                                    create account
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+<div class="row">
+<div class="col-md-7 border-top">
+            <div class="my-3 font-weight-light">
+                <h5 class="font-weight-light">Account Configurations & User Permissions</h5>
+                <p class="ml-2">
+                    Hello. Thanks you for Subscribing our
+                    <span class="text-info">
+                        Mashaddien Social Students Comments Messenger
+                    </span>
+                    If after registration you will forget password, contact our Server Administration <br>
+                    <a href="https://t.me/contactourgroupbot" class="text-success font-weight-normal">
+                        Contact us
+                    </a>
+                    <span class="text-muted">if you have problem !?</span>
+                </p>
+            </div>
+        </div>
+</div>
+    </div>
+
+<%- include('partials/footer'); -%>

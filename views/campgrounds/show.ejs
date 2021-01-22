@@ -1,0 +1,107 @@
+<%- include('../partials/header'); -%>
+<div class="container">
+    <div class="row ml-1">
+        <div class="col-md-7">
+            <div class="p-2">
+                <% if(error && error.length > 0){ %>
+                    <div class="alert bg-danger text-white text-uppercase small" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success && success.length > 0){ %>
+                    <div class="alert alert-dark mt-4 text-uppercase" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+            </div>
+            <div class="card" style="border-radius: 15px">
+                <div class="card-header" style="border-radius: 15px">
+                    <% if( campground.image){ %>
+                        <img src="<%= campground.image%>" class="img-fluid rounded-pill" alt="<%= campground.name%>">
+                    <% } %>
+                </div>
+                <div class="card-body">
+                    <div class="border d-flex align-items-center justify-content-around p-2"
+                         style="border-radius: 10px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3
+                                        class="font-weight-light mt-1 text-info text-uppercase"
+                                        style="font-size: 1em">
+                                    @<%= campground.author.username%>
+                                </h3>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="font-weight-light mt-1" style="font-size: 1em">
+                                    DT:
+                                    <%= `${campground.created.getDate()+1}-${campground.created.getMonth()+1
+                                    }-${campground.created.getFullYear()}`%>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <h5 class="text-left font-weight-normal p-1 pb-3">
+                            <%= campground.name%>
+                        </h5>
+                        <p class="text-justify font-weight-light border-top pt-3">
+                            <%= campground.description%>
+                        </p>
+                    </div>
+                    <div class="card-footer border d-flex" style="border-radius: 15px">
+                        <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+                            <a class="btn btn-sm btn-info" href="/bootcards/<%= campground._id %>/edit">Edit</a>
+                            <form id="delete-form" action="/bootcards/<%= campground._id %>?_method=DELETE"
+                                  method="POST" class="">
+                                <button class="btn btn-sm btn-danger ml-5">Delete</button>
+                            </form>
+                        <% }%>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row justify-content-between align-items-center">
+                        <button class="btn btn-sm btn-dark disabled text-uppercase mb-2">
+                            comments :
+                            <%= campground.comments.length%>
+                        </button>
+                        <a class="btn btn-sm btn-warning text-uppercase mb-2"
+                           href="/bootcards/<%= campground.author.username%>/<%= campground._id%>/comment">
+                            send comment
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row p-3">
+            <% campground.comments.forEach(function(comment){ %>
+                <div class="col-md-12 m-2" style="border-radius: 15px; border: 2px solid #dee2e6">
+                    <div class="p-1 pt-3">
+                        <h6 class="text-right font-weight-light text-danger text-uppercase">
+                            <%= comment.author.username%>
+                        </h6>
+                        <p>
+                            <%= comment.text%>
+                        </p>
+                    </div>
+                    <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                        <div class="p-1 mb-1">
+                            <div class="card-footer">
+                                <div class="row justify-content-between align-items-center">
+                                    <a class="btn btn-sm btn-warning" href="/bootcards/<%=campground.author.username %>/<%=campground._id %>/comment/<%=comment._id %>/edit">
+                                        Edit
+                                    </a>
+                                    <form id="delete-form" action="/bootcards/<%=campground.author.username %>/<%=campground._id %>/comment/<%=comment._id%>?_method=DELETE" method="POST">
+                                        <input type="submit" class="btn btn-sm btn-dark" value="Delete">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); -%>

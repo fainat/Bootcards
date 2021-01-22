@@ -1,0 +1,95 @@
+<%- include('partials/header'); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="my-2 p-3">
+            <h4 class="text-uppercase font-weight-light">
+                Welcome Boot Comments & Boot Cards fro
+                <span class="text-danger">
+                    Students
+                </span>
+            </h4>
+            <h5 class="text-capitalize text-info font-weight-light m-3">
+                thanks your for subscribing our Social Boot Comments for Students
+            </h5>
+            <div class="alert alert-danger">
+                <p class="text-black alert-heading text-uppercase">Important. Read me!</p>
+                <p class="text-capitalize alert-heading">Please set easy password for your future account</p>
+            </div>
+        </div>
+        <div class="col-md-6 border-top">
+            <div class="mt-4">
+                <div class="m-2">
+                    <div class="float-left">
+                        <% if(error && error.length > 0){ %>
+                            <div class="alert bg-danger text-white text-uppercase small" role="alert">
+                                <%= error %>
+                            </div>
+                        <% } %>
+                        <% if(success && success.length > 0){ %>
+                            <div class="alert " role="alert">
+                                <%= success %>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <form action="/registration" method="post">
+                    <div class="input-group my-2">
+                        <input type="text" name="name" placeholder="Your name" class="form-control">
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="text" name="lastname" placeholder="Your last name" class="form-control">
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="number" name="age" placeholder="your age"
+                               class="form-control">
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="text" name="username" placeholder="Create new @username" class="form-control">
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="email" name="email" placeholder="Enter your email address"
+                               class="form-control">
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="password" name="password" placeholder="Create password" class="form-control">
+                        <button type="button" class="btn btn-primary btn-sm ml-2">show</button>
+                    </div>
+                    <div class="border-top p-1 my-2">
+                        <div class="my-3">
+                            <button type="reset" class="btn btn-dark">
+                                Reset
+                            </button>
+                            <button type="submit" class="btn btn-info">
+                                Registration
+                            </button>
+                        </div>
+                    </div>
+                    <a href="/login" class="btn btn-link">
+                        have account ? Login
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7 border-top">
+            <div class="my-3 font-weight-light">
+                <h5 class="font-weight-light">Account Configurations & User Permissions</h5>
+                <p class="ml-2">
+                    Hello. Thanks you for Subscribing our
+                    <span class="text-info">
+                        Mashaddien Social Students Comments Messenger
+                    </span>
+                    If after registration you will forget password, contact our Server Administration <br>
+                    <a href="https://t.me/contactourgroupbot" class="text-success font-weight-normal">
+                        Contact us
+                    </a>
+                    <span class="text-muted">if you have problem !?</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer'); -%>

@@ -1,0 +1,42 @@
+<%- include('../partials/header'); -%>
+
+<div class="container">
+    <div class="border-bottom p-2 mb-2 mt-4">
+        <h5 class="text-uppercase">
+            Send new Comment :
+            <span class="text-success">
+                <%= campground.name%>
+            </span>
+        </h5>
+        <h6 class="text-info font-weight-light text-uppercase">
+            Comment Sending :
+            <span class="text-uppercase text-danger">
+               @<%= campground.author.username%>
+            </span> Boot Post<br>
+        </h6>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-7">
+            <form action="/bootcards/<%= campground.author.username%>/<%= campground._id %>/comment" method="POST">
+                <div class="form-group">
+                    <textarea class="form-control" type="text" name="comment[text]"
+                              placeholder="enter your new Comment"></textarea>
+                </div>
+                <div class=" p-1 my-2">
+                    <div>
+                        <a href="/bootcards/<%= campground._id%>" type="reset" class="btn btn-dark btn-sm">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-info btn-sm ml-2">
+                            Send Comment
+                        </button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); -%>
+

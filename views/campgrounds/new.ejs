@@ -1,0 +1,53 @@
+<%- include('../partials/header'); -%>
+
+<div class="container">
+    <div class="border-bottom p-2 mb-2 mt-4">
+        <h4 class="text-info font-weight-light text-uppercase">
+            Welcome <span class="text-danger"><%= currentUser.name%></span>
+        </h4>
+        <h5 class="text-success font-weight-light text-capitalize p-1">
+            Create New Boot for Discussing comments or Create new Dreams <br>
+            Create your story's <br>
+        </h5>
+        <h6 class="text-warning font-weight-light text-uppercase border-top p-1">
+            enter your boot <br>
+            <span class="text-danger">name</span> & <br>
+            <span class="text-danger">paste very beautiful image url or no</span> & <br>
+            <span class="text-danger">write your ideas or story description</span>
+            after click
+            <span class="text-dark">
+                button Create Boot and search your
+                boot in bootcards home page click and edit full your boot <br>
+                then wait comments our subscriber's 😉
+            </span>
+        </h6>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-7">
+            <form action="/bootcards" method="POST">
+                <div class="form-group">
+                    <input placeholder="Boot Name" class="form-control" type="text" name="name">
+                </div>
+                <div class="form-group">
+                    <input placeholder="Paste Your Story image url" class="form-control" type="text" name="image">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Write your Boot Description" class="form-control"
+                              type="description" name="description"></textarea>
+                </div>
+                <div class=" p-1 my-2">
+                    <div>
+                        <a href="/bootcards" type="reset" class="btn btn-primary">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-warning ml-2">
+                            Create Boot
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer'); -%>
+

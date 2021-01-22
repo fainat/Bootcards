@@ -1,0 +1,110 @@
+<%- include('../partials/header'); -%>
+
+<div class="container">
+    <div class="row">
+        <div class="my-2 p-3">
+            <h4 class="text-uppercase font-weight-light">
+                Edit Profile settings Page
+            </h4>
+            <h4 class="text-danger">
+                <%=`${currentUser.name} ${currentUser.lastname}`%>
+            </h4>
+            <h5 class="text-capitalize text-info font-weight-light m-3">
+                Account Created <%= currentUser.devices[currentUser.devices.length -1].data%>
+            </h5>
+            <h5 class="text-danger">
+                <% if(success && success.length > 0){ %>
+                    <%= success %>
+                <% } %>
+            </h5>
+        </div>
+        <div class="col-md-6 border-left m-3">
+            <div class="mt-4">
+                <form action="/bootcards/<%= currentUser.username%>/profile/?_method=PUT" method="POST">
+                    <div class="input-group my-2">
+                        <input type="text" name="user[name]" placeholder="Your name" class="form-control"
+                               value="<%= currentUser.name%>"
+                        >
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="text" name="user[lastname]" placeholder="Your last name" class="form-control"
+                               value="<%= currentUser.lastname%>"
+                        >
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="number" name="user[age]" placeholder="your age"
+                               class="form-control" value="<%= currentUser.age%>">
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="text" name="user[username]" placeholder="Create new @username" class="form-control"
+                               value="<%= currentUser.username%>"
+                        >
+                    </div>
+                    <div class="input-group my-2">
+                        <input type="email" name="user[email]" placeholder="Enter your email address"
+                               class="form-control" value="<%= currentUser.email%>">
+                    </div>
+                    <div class="input-group my-2 d-none">
+                        <input type="email" name="generatePass" placeholder="Enter your email address"
+                               class="form-control" value="<%= currentUser.email%>">
+                    </div>
+                    <div class="input-group my-2">
+                        <% if(error && error.length > 0){ %>
+                            <div class="alert bg-danger text-white text-uppercase small" role="alert">
+                                <h3 class="font-weight-light text-danger">
+                                    <%= error %>
+                                </h3>
+                            </div>
+                        <% } %>
+                        <% if(success && success.length > 0){ %>
+                            <div class="alert " role="alert">
+                                <h3 class="font-weight-light text-success">
+                                    <%= success %>
+                                </h3>
+                            </div>
+                        <% } %>
+                    </div>
+                    <div class="input-group my-2 d-none">
+                        <input type="text" name="newpassword" placeholder="enter your new password" class="form-control">
+                    </div>
+                    <div class="border-top p-1 my-2">
+                        <div class="my-3">
+                            <a href="/bootcards" type="reset" class="btn btn-dark">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-info">
+                                Edit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h3 class="font-weight-light">active devices</h3>
+        <div class="container">
+            <% currentUser.devices.map((device, inx) => { %>
+                <%if (device.name) {%>
+                    <div class="border p-2 m-1" style="border-radius: 5px !important;">
+                        <p class="text-primary font-weight-bolder">
+                            device:
+                            <span class="text-black font-weight-light"><%=device.name%></span>
+                        </p>
+                        <p class="text-danger font-weight-bolder">
+                            date:
+                            <span class="text-black font-weight-light">
+                                <%=`${device.date.getDate()}.${device.date.getMonth()}.${device.date.getFullYear()}`%>
+                            </span>
+                            <br>
+                        </p>
+                    </div>
+                <%} else {%>
+                    <p>no other active devices</p>
+                <%}%>
+            <%})%>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer'); -%>

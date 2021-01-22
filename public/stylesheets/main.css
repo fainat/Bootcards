@@ -1,0 +1,36 @@
+.thumbnail img {
+    width: 100%;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+
+#delete-form {
+    display: inline;
+}
+
+.font-light h5, .font-light h6{
+    font-weight: lighter !important;
+    text-transform: capitalize;
+}
+
+@media screen and (max-width: 750px) {
+    .registration {
+        text-align: center;
+    }
+    .userheader {
+        margin-right: -1rem !important;
+        margin-top: .5rem !important;
+        margin-left: -1.1rem !important;
+        display: inline !important;
+    }
+    .userheader li {
+        margin-top: .6rem !important;
+        border: 0 !important;
+    }
+}
